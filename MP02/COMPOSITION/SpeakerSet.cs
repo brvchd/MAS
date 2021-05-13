@@ -13,8 +13,8 @@
             InstalledIn = installedIn;
         }
 
-        public string ID { get => iD; set => iD = value; }
-        public string ModelName { get => modelName; set => modelName = value; }
+        public string ID { get => iD; set => iD = (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value)) ? value : throw new ModelValidationExceotion("ID cannot be null"); }
+        public string ModelName { get => modelName; set => modelName = (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value)) ? value : throw new ModelValidationExceotion("Model name cannot be null"); }
         public TV InstalledIn
         {
             get => installedIn;
