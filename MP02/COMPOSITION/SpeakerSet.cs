@@ -1,4 +1,6 @@
-﻿namespace MP02.COMPOSITION
+﻿using MP02.СustomException;
+
+namespace MP02.COMPOSITION
 {
     public class SpeakerSet
     {
@@ -13,8 +15,8 @@
             InstalledIn = installedIn;
         }
 
-        public string ID { get => iD; set => iD = (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value)) ? value : throw new ModelValidationExceotion("ID cannot be null"); }
-        public string ModelName { get => modelName; set => modelName = (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value)) ? value : throw new ModelValidationExceotion("Model name cannot be null"); }
+        public string ID { get => iD; set => iD = (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value)) ? value : throw new ModelValidationException("ID cannot be null"); }
+        public string ModelName { get => modelName; set => modelName = (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value)) ? value : throw new ModelValidationException("Model name cannot be null"); }
         public TV InstalledIn
         {
             get => installedIn;
