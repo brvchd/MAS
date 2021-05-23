@@ -11,6 +11,7 @@ namespace MP03.Ovelapping
         private HashSet<VehicleType> types;
         private double engineDisplacement;
         private string manufacturer;
+        //specific fields
 
         public Vehicle(string name, HashSet<VehicleType> types, string manufacturer, double engineDisplacement)
         {

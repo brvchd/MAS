@@ -47,8 +47,8 @@ namespace MP03.MultiAspect
         public string Resolution { get => resolution; set => resolution = value; }
         public int DefaultBrightness { get => defaultBrightness; set => defaultBrightness = value; }
         public string Ratio { get => ratio; set => ratio = value; }
-        public LocalSet Local { get => local; set => local = value; }
-        public TVType TvType { get => tvType; set => tvType = value; }
+        public LocalSet Local { get => local; set => local = value; } //should be private
+        public TVType TvType { get => tvType; set => tvType = value; } //should be private
         public List<string> Languages { get => languages; set => languages = value; }
         public List<string> ChannelsSet { get => channelsSet; set => channelsSet = value; }
 
@@ -119,6 +119,7 @@ namespace MP03.MultiAspect
 
         public void SwitchToArtMode()
         {
+            //checker
             if (DefaultBrightness == 800 && Ratio.Equals("4:3"))
             {
                 return;
@@ -130,6 +131,7 @@ namespace MP03.MultiAspect
 
         public void SwitchToPresentationMode()
         {
+            //checker
             if (DefaultBrightness == 2000 && Ratio.Equals("16:9"))
             {
                 return;
