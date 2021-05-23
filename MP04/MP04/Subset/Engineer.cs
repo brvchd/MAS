@@ -1,4 +1,5 @@
 using System;
+using MP04.СustomException;
 
 namespace MP04.Subset
 {
@@ -14,8 +15,8 @@ namespace MP04.Subset
             FirstName = firstName;
             LastName = lastName;
         }
-        public string FirstName { get => firstName; set => firstName = string.IsNullOrWhiteSpace(value) ? throw new Exception() : value; }
-        public string LastName { get => lastName; set => lastName = string.IsNullOrWhiteSpace(value) ? throw new Exception() : value; }
+        public string FirstName { get => firstName; set => firstName = string.IsNullOrWhiteSpace(value) ? throw new ModelValidationException("Invalid first name") : value; }
+        public string LastName { get => lastName; set => lastName = string.IsNullOrWhiteSpace(value) ? throw new ModelValidationException("Invalid last name") : value; }
         public Department Department
         {
             get => department; set

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using MP04.СustomException;
 
 namespace MP04.Unique
 {
@@ -24,11 +25,11 @@ namespace MP04.Unique
             {
                 if(value < 0)
                 {
-                    throw new Exception("Wrong VIN number. Cannot be less than 0");
+                    throw new ModelValidationException("Wrong VIN number. Cannot be less than 0");
                 }
                 if(vinCodes.Contains(value))
                 {
-                    throw new Exception("VIN numbe already assigned");
+                    throw new ModelValidationException("VIN number already assigned");
                 }
                 if(vinCodes.Contains(vinCode) && value != vinCode)
                 {
@@ -37,8 +38,8 @@ namespace MP04.Unique
                     vinCode = value;
             }
         }
-        public string Model { get => model; set => model = string.IsNullOrWhiteSpace(value) ? throw new Exception("Wrong model name") : value; }
-        public string Manufacturer { get => manufacturer; set => manufacturer = string.IsNullOrWhiteSpace(value) ? throw new Exception("Wrong manufacturer name") : value; }
+        public string Model { get => model; set => model = string.IsNullOrWhiteSpace(value) ? throw new ModelValidationException("Wrong model name") : value; }
+        public string Manufacturer { get => manufacturer; set => manufacturer = string.IsNullOrWhiteSpace(value) ? throw new ModelValidationException("Wrong manufacturer name") : value; }
         public static List<int> VinCodes { get => new(vinCodes); }
     }
 }

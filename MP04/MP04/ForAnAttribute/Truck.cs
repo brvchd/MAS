@@ -1,4 +1,4 @@
-using System;
+using MP04.СustomException;
 
 namespace MP04.ForAnAttribute
 {
@@ -20,10 +20,10 @@ namespace MP04.ForAnAttribute
             CurrentLoad = currentLoad;
         }
 
-        public string Model { get => model; set => model = string.IsNullOrWhiteSpace(value) ? throw new Exception("Wrong model name") : value; }
-        public string Manufacturer { get => manufacturer; set => manufacturer = string.IsNullOrWhiteSpace(value) ? throw new Exception("Wrong manufacturer") : value; }
-        public int TyresSize { get => tyresSize; set => tyresSize = (value > tyresSize) ? value : throw new Exception("Cannot change tyre size") ; }
-        public double CurrentLoad { get => currentLoad; set => currentLoad = (value >= minLoad && value <= maxLoad) ? value : throw new Exception("Cannot set the current load"); }
+        public string Model { get => model; set => model = string.IsNullOrWhiteSpace(value) ? throw new ModelValidationException("Invalid model name") : value; }
+        public string Manufacturer { get => manufacturer; set => manufacturer = string.IsNullOrWhiteSpace(value) ? throw new ModelValidationException("Wrong manufacturer") : value; }
+        public int TyresSize { get => tyresSize; set => tyresSize = (value > tyresSize) ? value : throw new ModelValidationException("Cannot change tyre size") ; }
+        public double CurrentLoad { get => currentLoad; set => currentLoad = (value >= minLoad && value <= maxLoad) ? value : throw new ModelValidationException("Cannot set the current load"); }
 
 
 

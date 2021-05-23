@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using MP04.СustomException;
 
 namespace MP04.Subset
 {
     public class Department
     {
         private string deptName;
-        private HashSet<Engineer> deptMembers = new();
-        private HashSet<Engineer> leads = new();
+        private readonly HashSet<Engineer> deptMembers = new();
+        private readonly HashSet<Engineer> leads = new();
 
         public Department(string deptName, Engineer engineer)
         {
@@ -16,7 +17,7 @@ namespace MP04.Subset
         }
 
         public HashSet<Engineer> DeptMembers { get => new(deptMembers); }
-        public string DeptName { get => deptName; set => deptName = string.IsNullOrWhiteSpace(value)? throw new Exception() : value; }
+        public string DeptName { get => deptName; set => deptName = string.IsNullOrWhiteSpace(value)? throw new ModelValidationException("Invalid dept name") : value; }
         public HashSet<Engineer> Leads { get => new(leads); }
 
         public void RemoveEngineer(Engineer engineer)
