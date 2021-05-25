@@ -13,6 +13,7 @@ namespace MP04.Ordered
         {
             FirstName = firstName;
             LastName = lastName;
+            AddToWaitingLine(this); //?
             
         }
 

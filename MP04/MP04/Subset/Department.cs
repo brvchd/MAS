@@ -7,8 +7,8 @@ namespace MP04.Subset
     public class Department
     {
         private string deptName;
-        private readonly HashSet<Engineer> deptMembers = new();
-        private readonly HashSet<Engineer> leads = new();
+        private readonly HashSet<Engineer> deptMembers = new(); 
+        private readonly HashSet<Engineer> leads = new(); 
 
         public Department(string deptName, Engineer engineer)
         {

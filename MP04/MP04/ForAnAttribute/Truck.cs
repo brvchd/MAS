@@ -34,7 +34,7 @@ namespace MP04.ForAnAttribute
             {
                 if (!Regex.Match(value, "^[a-zA-Z]+[0-9]+[a-zA-Z]+$").Success)
                 {
-                    throw new ModelValidationException("Inccorect number plate");
+                    throw new ModelValidationException("Incrorect number plate");
                 }
                 plateNumber = value;
             }
