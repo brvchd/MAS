@@ -19,7 +19,7 @@ namespace MP03.Dynamic
         private int wings; //optional
         private double acceleration;
 
-        public Vehicle(string model, string manufacturer, EngineType engine, double engineDispalcement, VehicleType typeOfVehicle, int waterDisplacement, int wings, double acceleration)
+        public Vehicle(string model, string manufacturer, EngineType engine, double engineDispalcement, VehicleType typeOfVehicle, int waterDisplacement = 0, int wings = 0, double acceleration = 0)
         {
             Model = model;
             Manufacturer = manufacturer;

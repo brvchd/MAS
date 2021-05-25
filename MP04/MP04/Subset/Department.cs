@@ -30,6 +30,10 @@ namespace MP04.Subset
             {
                 return;
             }
+            if(engineer.LeadOfDepartment != null)
+            {
+                throw new Exception("You cannot remove engineer because he/she is on lead position");
+            }
             deptMembers.Remove(engineer);
             engineer.Department = null;
         }

@@ -1,4 +1,5 @@
 using System;
+using MP04.СustomException;
 
 namespace MP04.XOR
 {
@@ -19,21 +20,26 @@ namespace MP04.XOR
             Country = country;
         }
 
-        public string FirstName { get => firstName; set => firstName = value; }
-        public string LastName { get => lastName; set => lastName = value; }
-        public string City { get => city; set => city = value; }
-        public string Country { get => country; set => country = value; }
+        public string FirstName { get => firstName; set => firstName = string.IsNullOrWhiteSpace(value) ? value : throw new ModelValidationException("Invalid first name"); }
+        public string LastName { get => lastName; set => lastName = string.IsNullOrWhiteSpace(value) ? value : throw new ModelValidationException("Invalid last name"); }
+        public string City { get => city; set => city = string.IsNullOrWhiteSpace(value) ? value : throw new ModelValidationException("Invalid city"); }
+        public string Country { get => country; set => country = string.IsNullOrWhiteSpace(value) ? value : throw new ModelValidationException("Invalid country"); }
         public Samsung Samsung
         {
             get => samsung; set
             {
-                if (apple != null)
+                if (apple != null && value != null)
                 {
-                    throw new Exception();
+                    RemoveAssosiationFromApple();
+                    SetAssosiationWithSamsung(value);
                 }
-                if (value != null)
+                else if (samsung == null && value != null)
                 {
-                    samsung = null;
+                    SetAssosiationWithSamsung(value);
+                }
+                else if (value == null && samsung != null)
+                {
+                    RemoveAssosiationFromSamsung();
                 }
             }
         }
@@ -41,15 +47,44 @@ namespace MP04.XOR
         {
             get => apple; set
             {
-                if(samsung != null)
+                if(samsung != null && value != null)
                 {
-                    throw new Exception();
+                    RemoveAssosiationFromSamsung();
+                    SetAssosiationWithApple(value);
                 }
-                if (value != null)
+                else if (apple == null && value != null)
                 {
-                    apple = value;
+                    SetAssosiationWithApple(value);
                 }
+                else if(value == null && apple != null)
+                {
+                    RemoveAssosiationFromApple();
+                }
+                
             }
         }
+        public void RemoveAssosiationFromSamsung()
+        {
+            Samsung tmp = samsung;
+            samsung = null;
+            tmp.RemovePerson(this);
+        }
+         public void RemoveAssosiationFromApple()
+        {
+            Apple tmp = apple;
+            apple = null;
+            tmp.RemovePerson(this);
+        }
+        public void SetAssosiationWithApple(Apple apl)
+        {
+            apple = apl;
+            apl.AddPerson(this);
+        }
+         public void SetAssosiationWithSamsung(Samsung sams)
+        {
+            samsung = sams;
+            sams.AddPerson(this);
+        }
+
     }
 }
