@@ -11,6 +11,7 @@ namespace MP04.XOR
         private string country;
         private Samsung samsung = null;
         private Apple apple = null;
+        //Business case
 
         public Person(string firstName, string lastName, string city, string country)
         {

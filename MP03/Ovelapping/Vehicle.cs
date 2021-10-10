@@ -13,9 +13,9 @@ namespace MP03.Ovelapping
         private double engineDisplacement;
         private string manufacturer;
         //specific fields
-        private int displacementWater; // canswim
-        private int jetHP; // canfly
-        private double turboPSI; //canride
+        private int displacementWater; // canswim getset
+        private int jetHP; // canfly getset
+        private double turboPSI; //canride getset
 
         public Vehicle(string name, HashSet<VehicleType> types, string manufacturer, double engineDisplacement)
         {

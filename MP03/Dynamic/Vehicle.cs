@@ -15,8 +15,8 @@ namespace MP03.Dynamic
         private string model;
         private static List<Vehicle> extent = new();
         private const string EXTENT_FILE = @"Dynamic/extent.json";
-        private int waterDisplacement; //optional
-        private int wings; //optional
+        private int waterDisplacement; //optional == null
+        private int wings; //optional == null
         private double acceleration;
 
         public Vehicle(string model, string manufacturer, EngineType engine, double engineDispalcement, VehicleType typeOfVehicle, int waterDisplacement = 0, int wings = 0, double acceleration = 0)

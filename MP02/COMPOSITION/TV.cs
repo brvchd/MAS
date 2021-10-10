@@ -45,3 +45,39 @@ namespace MP02.COMPOSITION
         public int Year { get => year; set => year = (value < 2018) ? value : throw new ModelValidationException("Year cannot be less than 2018"); }
     }
 }
+public Location Loca
+        {
+            get => loca; private set
+            {
+                if (value == loca)
+                {
+                    return;
+                }
+                if(loca == null && value != null)
+                {
+                    AddShop(value);
+                }
+                if (loca != null && value != null)
+                {
+                    RemoveShop();
+                    AddShop(value);
+                }
+            }
+
+        }
+
+        public void AddShop(Location loc)
+        {
+            loca = loc;
+            loc.AddShop(this);
+        }
+
+        public void RemoveShop()
+        {
+            if(loca != null)
+            {
+                Location tmp = loca;
+                loca = null;
+                tmp.RemoveShop(this);
+            }
+        }
